@@ -2,6 +2,7 @@ package com.example.SharpCut.Config;
 
 import com.example.SharpCut.Repositories.ProfileRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -21,6 +22,11 @@ import java.util.Properties;
 public class ApplicationConfiguration {
     @Autowired
     private ProfileRepository profileRepository;
+
+    @Value("${email}")
+    private String yourEmail;
+    @Value("${password}")
+    private String yourPassword;
 
     @Bean
     public UserDetailsService userDetailsService() {
@@ -57,8 +63,8 @@ public class ApplicationConfiguration {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("ehmedmughal@gmail.com");
-        mailSender.setPassword("sxoq cqwm mach jbgo");
+        mailSender.setUsername(yourEmail);
+        mailSender.setPassword(yourPassword);
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");
