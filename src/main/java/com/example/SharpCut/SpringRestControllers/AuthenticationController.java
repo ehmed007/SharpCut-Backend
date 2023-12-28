@@ -32,7 +32,7 @@ public class AuthenticationController {
 
     @GetMapping("/say")
     public String sayHello() {
-        return "Server: I am actively running on port 8080";
+        return "Helo from Server: I am actively running on port 8080";
     }
 
     @PostMapping("/signup")
